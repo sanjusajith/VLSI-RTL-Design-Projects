@@ -1,0 +1,43 @@
+`timescale 1ns/1ps
+
+module mux_2x1_tb;
+
+reg i0;
+reg i1;
+reg sel;
+
+wire y;
+
+mux_2x1 uut(
+    .i0(i0),
+    .i1(i1),
+    .sel(sel),
+    .y(y)
+);
+
+initial begin
+
+    $display("i0 i1 sel | y");
+    $display("-------------");
+
+    i0=0; i1=1; sel=0;
+    #10;
+    $display("%b  %b   %b  | %b", i0,i1,sel,y);
+
+    i0=0; i1=1; sel=1;
+    #10;
+    $display("%b  %b   %b  | %b", i0,i1,sel,y);
+
+    i0=1; i1=0; sel=0;
+    #10;
+    $display("%b  %b   %b  | %b", i0,i1,sel,y);
+
+    i0=1; i1=0; sel=1;
+    #10;
+    $display("%b  %b   %b  | %b", i0,i1,sel,y);
+
+    $finish;
+
+end
+
+endmodule
